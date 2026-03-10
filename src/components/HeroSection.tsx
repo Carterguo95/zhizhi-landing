@@ -34,7 +34,7 @@ export function HeroSection() {
 
                 {/* Masking Occult Disk: Blurs global stars directly behind the compass but lets ambient glow pass through */}
                 <div
-                    className="absolute w-[1000px] h-[1000px] rounded-full pointer-events-none"
+                    className="absolute w-[150vw] md:w-[1000px] h-[150vw] md:h-[1000px] rounded-full pointer-events-none"
                     style={{
                         backdropFilter: "blur(40px)",
                         WebkitBackdropFilter: "blur(40px)",

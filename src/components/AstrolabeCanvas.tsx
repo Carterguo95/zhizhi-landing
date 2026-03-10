@@ -42,30 +42,56 @@ export function AstrolabeCanvas() {
             mouse.targetX = -1000;
             mouse.targetY = -1000;
         };
+        const handleTouchMove = (e: TouchEvent) => {
+            if (e.touches.length > 0) {
+                mouse.targetX = e.touches[0].clientX;
+                mouse.targetY = e.touches[0].clientY;
+            }
+        };
+
         window.addEventListener("mousemove", handleMouseMove);
         window.addEventListener("mouseout", handleMouseLeave);
+        window.addEventListener("touchstart", handleTouchMove, { passive: true });
+        window.addEventListener("touchmove", handleTouchMove, { passive: true });
+        window.addEventListener("touchend", handleMouseLeave);
+        window.addEventListener("touchcancel", handleMouseLeave);
 
         // Stars removed: Now handled by GlobalStarfield in layout
 
-        // Dimensional orbital configuration (scaled by logical size)
+        // Dimensional orbital configuration (scaled by logical size & device type)
         const minDim = Math.min(w, h);
+        const isMobile = w < 768;
+
+        // Responsive Radii: Expand spacing on mobile to prevent overlapping
+        const r1 = isMobile ? minDim * 0.18 : minDim * 0.15;
+        const r2 = isMobile ? minDim * 0.30 : minDim * 0.25;
+        const r3 = isMobile ? minDim * 0.40 : minDim * 0.35;
+        const r4 = isMobile ? minDim * 0.48 : minDim * 0.45;
+        const ringOuter = isMobile ? minDim * 0.55 : minDim * 0.6;
+
+        // Responsive Fonts: Scale down on mobile
+        const f1 = isMobile ? 14 : 21;
+        const f2 = isMobile ? 12 : 17;
+        const f3 = isMobile ? 12 : 17;
+        const f4 = isMobile ? 10 : 14;
+
         const serifFamily = '"New York", ui-serif, "Songti SC", "STSong", "Noto Serif SC", serif';
         const sansFamily = '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "PingFang SC", sans-serif';
 
         const orbits = [
-            { radius: minDim * 0.15, speed: 0.0003, items: GUA_XIANG, color: "rgba(212, 175, 55, 0.7)", font: `21px ${serifFamily}` }, // Ba Gua (Inner)
-            { radius: minDim * 0.25, speed: -0.00015, items: TIAN_GAN, color: "rgba(255, 255, 255, 0.6)", font: `17px ${serifFamily}` }, // Tian Gan (Middle)
-            { radius: minDim * 0.35, speed: 0.0001, items: DI_ZHI, color: "rgba(59, 130, 246, 0.7)", font: `17px ${serifFamily}` }, // Di Zhi (Outer)
-            { radius: minDim * 0.45, speed: -0.00005, items: Array(24).fill("·"), color: "rgba(255, 255, 255, 0.4)", font: `14px ${sansFamily}` } // Data nodes (Far Outer)
+            { radius: r1, speed: 0.0003, items: GUA_XIANG, color: "rgba(212, 175, 55, 0.7)", font: `${f1}px ${serifFamily}` }, // Ba Gua (Inner)
+            { radius: r2, speed: -0.00015, items: TIAN_GAN, color: "rgba(255, 255, 255, 0.6)", font: `${f2}px ${serifFamily}` }, // Tian Gan (Middle)
+            { radius: r3, speed: 0.0001, items: DI_ZHI, color: "rgba(59, 130, 246, 0.7)", font: `${f3}px ${serifFamily}` }, // Di Zhi (Outer)
+            { radius: r4, speed: -0.00005, items: Array(24).fill("·"), color: "rgba(255, 255, 255, 0.4)", font: `${f4}px ${sansFamily}` } // Data nodes (Far Outer)
         ];
 
         // Precision structural rings
         const rings = [
-            { radius: minDim * 0.15, dash: [2, 4], color: "rgba(212, 175, 55, 0.15)" },
-            { radius: minDim * 0.25, dash: [100, 20], color: "rgba(255, 255, 255, 0.05)" },
-            { radius: minDim * 0.35, dash: [40, 10, 2, 10], color: "rgba(59, 130, 246, 0.08)" },
-            { radius: minDim * 0.45, dash: [2, 12], color: "rgba(255, 255, 255, 0.03)" },
-            { radius: minDim * 0.6, dash: [], color: "rgba(255, 255, 255, 0.02)" }
+            { radius: r1, dash: [2, 4], color: "rgba(212, 175, 55, 0.15)" },
+            { radius: r2, dash: [100, 20], color: "rgba(255, 255, 255, 0.05)" },
+            { radius: r3, dash: [40, 10, 2, 10], color: "rgba(59, 130, 246, 0.08)" },
+            { radius: r4, dash: [2, 12], color: "rgba(255, 255, 255, 0.03)" },
+            { radius: ringOuter, dash: [], color: "rgba(255, 255, 255, 0.02)" }
         ];
 
         let time = 0;
@@ -196,6 +222,10 @@ export function AstrolabeCanvas() {
             window.removeEventListener("resize", resizeCanvas);
             window.removeEventListener("mousemove", handleMouseMove);
             window.removeEventListener("mouseout", handleMouseLeave);
+            window.removeEventListener("touchstart", handleTouchMove);
+            window.removeEventListener("touchmove", handleTouchMove);
+            window.removeEventListener("touchend", handleMouseLeave);
+            window.removeEventListener("touchcancel", handleMouseLeave);
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
