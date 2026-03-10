@@ -96,6 +96,14 @@ export function AstrolabeCanvas() {
             const centerY = h / 2;
 
             // Lerp mouse
+            if (isMobile) {
+                // Smooth Autopilot (Lissajous curve) simulating an organic finger hover
+                const autoRadius = minDim * 0.4;
+                const autoSpeed = 0.003;
+                mouse.targetX = centerX + Math.cos(time * autoSpeed) * autoRadius;
+                mouse.targetY = centerY + Math.sin(time * autoSpeed * 0.8) * (autoRadius * 0.8);
+            }
+
             mouse.x += (mouse.targetX - mouse.x) * 0.05;
             mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
@@ -152,29 +160,14 @@ export function AstrolabeCanvas() {
                     const x = centerX + Math.cos(itemAngle) * orbit.radius;
                     const y = centerY + Math.sin(itemAngle) * orbit.radius;
 
-                    // Calculate "activation" glow based on device type
+                    // Calculate distance to current pointer (real mouse or virtual mobile mouse)
+                    const dx = mouse.x - x;
+                    const dy = mouse.y - y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
                     let activeRatio = 0;
-
-                    if (isMobile) {
-                        // High-performance automated radar sweep for mobile
-                        const sweepAngle = (time * 0.005) % (Math.PI * 2);
-                        const normalizedItemAngle = (itemAngle % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2);
-                        let angleDiff = Math.abs(sweepAngle - normalizedItemAngle);
-                        if (angleDiff > Math.PI) angleDiff = Math.PI * 2 - angleDiff;
-
-                        if (angleDiff < Math.PI / 4) {
-                            activeRatio = (Math.PI / 4 - angleDiff) / (Math.PI / 4);
-                            activeRatio = activeRatio * (0.6 + 0.4 * Math.sin(time * 0.05 + i)); // Pulse
-                        }
-                    } else {
-                        // Desktop mouse hover interaction
-                        const dx = mouse.x - x;
-                        const dy = mouse.y - y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-
-                        if (dist < 150) {
-                            activeRatio = (150 - dist) / 150;
-                        }
+                    if (dist < 150) {
+                        activeRatio = (150 - dist) / 150;
                     }
 
                     ctx.save();
