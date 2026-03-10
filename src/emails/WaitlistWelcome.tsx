@@ -22,7 +22,7 @@ export const WaitlistWelcomeEmail = ({
     return (
         <Html>
             <Head />
-            <Preview>欢迎加入 知之ZHIZHI 核心内测名单 | Welcome to ZHIZHI</Preview>
+            <Preview>欢迎加入知之 ZHIZHI 核心内测名单 | Welcome to ZHIZHI</Preview>
             <Body style={main}>
                 <Container style={container}>
                     <Heading style={heading}>✨ 欢迎加入知之 ZHIZHI</Heading>
