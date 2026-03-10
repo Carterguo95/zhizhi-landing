@@ -18,6 +18,7 @@ export function AstrolabeCanvas() {
 
         let animationFrameId: number;
         let mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000 };
+        let lastInteractionTime = 0;
 
         let w = window.innerWidth;
         let h = window.innerHeight;
@@ -37,14 +38,27 @@ export function AstrolabeCanvas() {
         const handleMouseMove = (e: MouseEvent) => {
             mouse.targetX = e.clientX;
             mouse.targetY = e.clientY;
+            lastInteractionTime = Date.now();
         };
         const handleMouseLeave = () => {
             mouse.targetX = -1000;
             mouse.targetY = -1000;
         };
+        const handleTouchMove = (e: TouchEvent) => {
+            if (e.touches.length > 0) {
+                // Prevent default scrolling only if they are actively using the compass area
+                mouse.targetX = e.touches[0].clientX;
+                mouse.targetY = e.touches[0].clientY;
+                lastInteractionTime = Date.now();
+            }
+        };
 
         window.addEventListener("mousemove", handleMouseMove);
         window.addEventListener("mouseout", handleMouseLeave);
+        window.addEventListener("touchstart", handleTouchMove, { passive: true });
+        window.addEventListener("touchmove", handleTouchMove, { passive: true });
+        window.addEventListener("touchend", handleMouseLeave);
+        window.addEventListener("touchcancel", handleMouseLeave);
 
         // Stars removed: Now handled by GlobalStarfield in layout
 
@@ -89,23 +103,49 @@ export function AstrolabeCanvas() {
         const render = () => {
             time++;
 
+            // Update responsive dimensions inside render loop so they handle resizes perfectly
+            const minDim = Math.min(w, h);
+            const isMobile = w < 768;
+
+            // Responsive Radii
+            const r1 = isMobile ? minDim * 0.18 : minDim * 0.15;
+            const r2 = isMobile ? minDim * 0.30 : minDim * 0.25;
+            const r3 = isMobile ? minDim * 0.40 : minDim * 0.35;
+            const r4 = isMobile ? minDim * 0.48 : minDim * 0.45;
+            const ringOuter = isMobile ? minDim * 0.55 : minDim * 0.6;
+
+            // Update orbits config on the fly
+            orbits[0].radius = r1;
+            orbits[1].radius = r2;
+            orbits[2].radius = r3;
+            orbits[3].radius = r4;
+
+            rings[0].radius = r1;
+            rings[1].radius = r2;
+            rings[2].radius = r3;
+            rings[3].radius = r4;
+            rings[4].radius = ringOuter;
+
             // Clear canvas entirely to remain transparent
             ctx.clearRect(0, 0, w, h);
 
             const centerX = w / 2;
             const centerY = h / 2;
 
-            // Lerp mouse
-            if (isMobile) {
-                // Smooth Autopilot (Lissajous curve) simulating an organic finger hover
+            // Smart Autopilot: Engaging Lissajous curve only if the user hasn't interacted for 2 seconds
+            const isIdle = Date.now() - lastInteractionTime > 2000;
+
+            if (isMobile && isIdle) {
                 const autoRadius = minDim * 0.4;
-                const autoSpeed = 0.003;
+                const autoSpeed = 0.005; // Slightly faster for visual impact
                 mouse.targetX = centerX + Math.cos(time * autoSpeed) * autoRadius;
                 mouse.targetY = centerY + Math.sin(time * autoSpeed * 0.8) * (autoRadius * 0.8);
             }
 
-            mouse.x += (mouse.targetX - mouse.x) * 0.05;
-            mouse.y += (mouse.targetY - mouse.y) * 0.05;
+            // Lerp mouse (snappy on interaction, smooth on autopilot)
+            const lerpFactor = isIdle ? 0.02 : 0.15;
+            mouse.x += (mouse.targetX - mouse.x) * lerpFactor;
+            mouse.y += (mouse.targetY - mouse.y) * lerpFactor;
 
             // Background and stars removed: Now handled by GlobalStarfield
 
@@ -160,14 +200,16 @@ export function AstrolabeCanvas() {
                     const x = centerX + Math.cos(itemAngle) * orbit.radius;
                     const y = centerY + Math.sin(itemAngle) * orbit.radius;
 
-                    // Calculate distance to current pointer (real mouse or virtual mobile mouse)
+                    // Calculate distance to current pointer
+                    // Mobile user needs a slightly larger activation radius because fingers are imprecise
                     const dx = mouse.x - x;
                     const dy = mouse.y - y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
                     let activeRatio = 0;
-                    if (dist < 150) {
-                        activeRatio = (150 - dist) / 150;
+                    const activationRadius = isMobile ? 180 : 150;
+                    if (dist < activationRadius) {
+                        activeRatio = (activationRadius - dist) / activationRadius;
                     }
 
                     ctx.save();
@@ -223,6 +265,10 @@ export function AstrolabeCanvas() {
             window.removeEventListener("resize", resizeCanvas);
             window.removeEventListener("mousemove", handleMouseMove);
             window.removeEventListener("mouseout", handleMouseLeave);
+            window.removeEventListener("touchstart", handleTouchMove);
+            window.removeEventListener("touchmove", handleTouchMove);
+            window.removeEventListener("touchend", handleMouseLeave);
+            window.removeEventListener("touchcancel", handleMouseLeave);
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
