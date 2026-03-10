@@ -1,5 +1,9 @@
 "use server";
 
+import { Resend } from 'resend';
+import WaitlistWelcomeEmail from '@/emails/WaitlistWelcome';
+
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 type WaitlistResult =
     | { success: true }
     | { success: false; error: "already_registered" | "invalid_email" | "server_error" };
@@ -39,6 +43,23 @@ export async function submitWaitlistEmail(email: string): Promise<WaitlistResult
         const data = await response.json();
 
         if (data.success) {
+            // Also send a welcome email if Resend is configured
+            if (resend) {
+                try {
+                    await resend.emails.send({
+                        from: 'ZHIZHI <hello@zhizhi.one>',
+                        to: email.trim().toLowerCase(),
+                        subject: '✨ 欢迎加入 ZHIZHI 候补名单',
+                        react: WaitlistWelcomeEmail({ email: email.trim().toLowerCase() }),
+                    });
+                    console.log(`Welcome email successfully sent to ${email}`);
+                } catch (emailError) {
+                    console.error("Failed to send welcome email via Resend:", emailError);
+                    // We still return success because they are on the waitlist (Google Sheet)
+                }
+            } else {
+                console.warn("Resend API key missing. Welcome email not sent, but waitlist successful.");
+            }
             return { success: true };
         }
 
