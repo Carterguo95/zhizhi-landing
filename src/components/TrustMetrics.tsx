@@ -46,11 +46,11 @@ export function TrustMetrics() {
                         驱动底层架构进化的原生累积训练命盘
                     </p>
                     <div className="flex items-baseline gap-2">
-                        <span className="text-6xl md:text-8xl font-serif font-light text-white tracking-tighter">
+                        <span className="text-5xl sm:text-6xl md:text-8xl font-serif font-light text-white tracking-tighter">
                             {count.toLocaleString()}<span className="text-accent">+</span>
                         </span>
                     </div>
-                    <p className="text-white/60 text-lg md:text-xl font-light mt-6 max-w-5xl mx-auto leading-relaxed">
+                    <p className="text-white/60 text-base sm:text-lg md:text-xl font-light mt-6 max-w-5xl mx-auto leading-relaxed">
                         基于万千真实命盘构建的进化模型，你的每一次交互都在提供强化学习（RL）反馈，<br className="hidden md:block" />
                         随着驱动算力持续演进和数据扩张，为你带来前所未有的颗粒度与精准解析。
                     </p>

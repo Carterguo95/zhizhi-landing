@@ -41,7 +41,7 @@ export function BentoGridFeatures() {
                     </div>
 
                     {/* Abstract graphic representing astrology chart */}
-                    <div className="absolute right-[-40px] bottom-[-40px] w-64 h-64 border border-white/10 rounded-full flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute right-[-80px] bottom-[-80px] md:right-[-40px] md:bottom-[-40px] w-64 h-64 border border-white/10 rounded-full flex items-center justify-center opacity-30 md:opacity-60 scale-75 md:scale-100 group-hover:opacity-60 md:group-hover:opacity-100 transition-all duration-500 pointer-events-none">
                         <div className="w-48 h-48 border border-accent/30 rounded-full flex items-center justify-center animate-[spin_120s_linear_infinite]">
                             <div className="w-32 h-32 border border-white/10 rounded-full" />
                             <div className="absolute w-full h-[1px] bg-white/20 right-0 transform rotate-45" />

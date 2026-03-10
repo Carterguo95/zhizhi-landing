@@ -72,7 +72,7 @@ export function HeroSection() {
                     initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{ duration: 1, delay: 0.4 }}
-                    className="text-4xl md:text-6xl font-serif font-light tracking-wide mb-6 text-foreground"
+                    className="text-4xl sm:text-5xl md:text-6xl font-serif font-light tracking-wide mb-6 text-foreground"
                 >
                     懂你的先天密码<br />
                     <span className="text-white/60">陪你的每一个当下</span>
@@ -83,7 +83,7 @@ export function HeroSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
-                    className="max-w-2xl mx-auto text-lg md:text-xl text-white/50 mb-10 leading-relaxed font-light mt-4"
+                    className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-white/50 mb-10 leading-relaxed font-light mt-4"
                 >
                     Combining ancient destiny mapping with modern AI intelligence.
                     We provide hyper-personalized insights for your daily life, career, and relationships.

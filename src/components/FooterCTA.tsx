@@ -16,7 +16,7 @@ export function FooterCTA() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-4xl md:text-6xl font-serif font-light mb-8 text-white/90 tracking-wide"
+                    className="text-4xl sm:text-5xl md:text-6xl font-serif font-light mb-8 text-white/90 tracking-wide"
                 >
                     流年无声，<span className="text-white/40">知之有迹</span>
                 </motion.h2>
@@ -26,7 +26,7 @@ export function FooterCTA() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-lg text-muted-foreground font-light mb-6 max-w-xl mx-auto tracking-wide"
+                    className="text-base sm:text-lg text-muted-foreground font-light mb-6 max-w-xl mx-auto tracking-wide"
                 >
                     Silent time, traceable destiny. Decoded by AI.
                 </motion.p>
