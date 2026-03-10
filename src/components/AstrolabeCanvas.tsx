@@ -42,19 +42,9 @@ export function AstrolabeCanvas() {
             mouse.targetX = -1000;
             mouse.targetY = -1000;
         };
-        const handleTouchMove = (e: TouchEvent) => {
-            if (e.touches.length > 0) {
-                mouse.targetX = e.touches[0].clientX;
-                mouse.targetY = e.touches[0].clientY;
-            }
-        };
 
         window.addEventListener("mousemove", handleMouseMove);
         window.addEventListener("mouseout", handleMouseLeave);
-        window.addEventListener("touchstart", handleTouchMove, { passive: true });
-        window.addEventListener("touchmove", handleTouchMove, { passive: true });
-        window.addEventListener("touchend", handleMouseLeave);
-        window.addEventListener("touchcancel", handleMouseLeave);
 
         // Stars removed: Now handled by GlobalStarfield in layout
 
@@ -162,14 +152,29 @@ export function AstrolabeCanvas() {
                     const x = centerX + Math.cos(itemAngle) * orbit.radius;
                     const y = centerY + Math.sin(itemAngle) * orbit.radius;
 
-                    // Check distance to mouse to calculate "activation" glow
-                    const dx = mouse.x - x;
-                    const dy = mouse.y - y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
+                    // Calculate "activation" glow based on device type
                     let activeRatio = 0;
-                    if (dist < 150) {
-                        activeRatio = (150 - dist) / 150;
+
+                    if (isMobile) {
+                        // High-performance automated radar sweep for mobile
+                        const sweepAngle = (time * 0.005) % (Math.PI * 2);
+                        const normalizedItemAngle = (itemAngle % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2);
+                        let angleDiff = Math.abs(sweepAngle - normalizedItemAngle);
+                        if (angleDiff > Math.PI) angleDiff = Math.PI * 2 - angleDiff;
+
+                        if (angleDiff < Math.PI / 4) {
+                            activeRatio = (Math.PI / 4 - angleDiff) / (Math.PI / 4);
+                            activeRatio = activeRatio * (0.6 + 0.4 * Math.sin(time * 0.05 + i)); // Pulse
+                        }
+                    } else {
+                        // Desktop mouse hover interaction
+                        const dx = mouse.x - x;
+                        const dy = mouse.y - y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < 150) {
+                            activeRatio = (150 - dist) / 150;
+                        }
                     }
 
                     ctx.save();
@@ -181,9 +186,12 @@ export function AstrolabeCanvas() {
 
                     if (activeRatio > 0) {
                         // Activated state: bright gold/white + tech bracket
-                        ctx.fillStyle = `rgba(212, 175, 55, ${0.4 + activeRatio * 0.6})`;
-                        ctx.shadowBlur = 10;
-                        ctx.shadowColor = "rgba(212, 175, 55, 0.8)";
+                        ctx.fillStyle = `rgba(212, 175, 55, ${isMobile ? 0.3 + activeRatio * 0.5 : 0.4 + activeRatio * 0.6})`;
+
+                        if (!isMobile) {
+                            ctx.shadowBlur = 10;
+                            ctx.shadowColor = "rgba(212, 175, 55, 0.8)";
+                        }
 
                         // Draw bracket like [ 甲 ]
                         if (orbitIndex !== 3) {
@@ -222,10 +230,6 @@ export function AstrolabeCanvas() {
             window.removeEventListener("resize", resizeCanvas);
             window.removeEventListener("mousemove", handleMouseMove);
             window.removeEventListener("mouseout", handleMouseLeave);
-            window.removeEventListener("touchstart", handleTouchMove);
-            window.removeEventListener("touchmove", handleTouchMove);
-            window.removeEventListener("touchend", handleMouseLeave);
-            window.removeEventListener("touchcancel", handleMouseLeave);
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
