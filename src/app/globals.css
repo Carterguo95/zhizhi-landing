@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Default to Dark Mode as the single source of truth for the landing page */
+  --background: #040609;
+  /* Ultra-deep Midnight Obsidian */
+  --foreground: #F7F8FA;
+  /* Titanium White */
+
+  --primary: #3B82F6;
+  /* Accent Blue */
+  --primary-foreground: #FFFFFF;
+
+  --accent: #D4AF37;
+  /* Muted Aurum (Gold) */
+  --accent-foreground: #FFFFFF;
+
+  --muted: rgba(255, 255, 255, 0.03);
+  /* Glassmorphic Base */
+  --muted-foreground: #A1A1AA;
+
+  --border: rgba(255, 255, 255, 0.08);
+
+  /* Strict Apple System Fonts (Awwwards Level Typography) */
+  /* SF Pro Sans Setup (SF Pro for English, PingFang for Chinese) */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  /* Mixed setup: SF Pro (Sans) for English, Songti (Serif) for Chinese */
+  --font-serif: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Songti SC", "STSong", "Noto Serif SC", serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-serif);
+  scroll-behavior: smooth;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: var(--muted);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  /* 24px */
+}
+
+/* Base link reset */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Shake animation for form error state */
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-6px);
+  }
+
+  40% {
+    transform: translateX(6px);
+  }
+
+  60% {
+    transform: translateX(-4px);
+  }
+
+  80% {
+    transform: translateX(4px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
 }
