@@ -22,7 +22,7 @@ export const WaitlistWelcomeEmail = ({
     return (
         <Html>
             <Head />
-            <Preview>欢迎加入 知之ZHIZHI 候补名单 | Welcome to ZHIZHI</Preview>
+            <Preview>欢迎获取 知之ZHIZHI 核心内测席位 | Welcome to ZHIZHI</Preview>
             <Body style={main}>
                 <Container style={container}>
                     <Heading style={heading}>✨ 欢迎加入知之 ZHIZHI</Heading>
@@ -34,7 +34,7 @@ export const WaitlistWelcomeEmail = ({
                         感谢您的驻足。您已成功获得了 <strong>知之 ZHIZHI V1.0</strong> 核心内测版本的优先候补资格。
                     </Text>
                     <Text style={paragraph}>
-                        在这里，古老的东方命理图谱正在与前沿的 AI 深度推理（Deep Reasoning）发生跨越时空的碰撞。知之不仅仅是一款解析工具，更是一个得益于千万级数据强化学习、能够一直伴随您共同进化的生命罗盘。
+                        在这里，古老的东方命理图谱正在与前沿的 AI 深度推理发生跨越时空的碰撞。知之不仅仅是一款解析工具，更是一个得益于千万级数据强化学习、能够一直伴随您共同进化的生命罗盘。
                     </Text>
                     <Text style={paragraph}>
                         为了保证绝佳的颗粒度与专注的演化算力，我们目前采用预约制逐步邀请开放。当您的专属通道就绪时，我们将在第一时间通过这封邮件向您发放内测密匙。
@@ -57,7 +57,7 @@ export const WaitlistWelcomeEmail = ({
                     <Hr style={hr} />
 
                     <Text style={footer}>
-                        流年无声，知之有迹。<br />
+                        流年无声，知之有迹<br />
                         ZHIZHI Team
                     </Text>
                 </Container>
