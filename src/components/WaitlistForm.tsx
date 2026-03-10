@@ -197,7 +197,7 @@ export function WaitlistForm() {
                                 ) : (
                                     <>
                                         <span className="relative z-10">
-                                            加入候补
+                                            Join Waitlist
                                         </span>
                                         <ArrowRight className="w-4 h-4 text-white/70 relative z-10 group-hover:translate-x-1 transition-transform" />
                                     </>

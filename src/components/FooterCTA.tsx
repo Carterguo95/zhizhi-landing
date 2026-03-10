@@ -18,7 +18,7 @@ export function FooterCTA() {
                     transition={{ duration: 0.8 }}
                     className="text-4xl md:text-6xl font-serif font-light mb-8 text-white/90 tracking-wide"
                 >
-                    流年无声，<span className="text-white/40">知之有迹。</span>
+                    流年无声，<span className="text-white/40">知之有迹</span>
                 </motion.h2>
 
                 <motion.p
