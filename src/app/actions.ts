@@ -47,7 +47,7 @@ export async function submitWaitlistEmail(email: string): Promise<WaitlistResult
             if (resend) {
                 try {
                     await resend.emails.send({
-                        from: 'ZHIZHI <hello@zhizhi.one>',
+                        from: 'ZHIZHI <onboarding@resend.dev>',
                         to: email.trim().toLowerCase(),
                         subject: '✨ 欢迎加入 ZHIZHI 候补名单',
                         react: WaitlistWelcomeEmail({ email: email.trim().toLowerCase() }),

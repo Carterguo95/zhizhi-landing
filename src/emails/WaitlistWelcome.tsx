@@ -51,7 +51,7 @@ export const WaitlistWelcomeEmail = ({
                         <Link style={link} href="https://x.com/zhizhiapp">
                             @zhizhiapp
                         </Link>
-                        ，获取最新研发动态。
+                        ，获取最新动态。
                     </Text>
 
                     <Hr style={hr} />
