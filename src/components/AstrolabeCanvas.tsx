@@ -20,20 +20,21 @@ export function AstrolabeCanvas() {
         let mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000 };
         let lastInteractionTime = 0;
 
-        let w = window.innerWidth;
-        let h = window.innerHeight;
+        let w = canvas.clientWidth || window.innerWidth;
+        let h = canvas.clientHeight || window.innerHeight;
 
-        const resizeCanvas = () => {
-            w = window.innerWidth;
-            h = window.innerHeight;
-            // Handle High-DPI (Retina) displays to prevent blurry text and graphics
-            const dpr = window.devicePixelRatio || 1;
-            canvas.width = w * dpr;
-            canvas.height = h * dpr;
-            ctx.scale(dpr, dpr);
-        };
-        window.addEventListener("resize", resizeCanvas);
-        resizeCanvas();
+        const resizeObserver = new ResizeObserver((entries) => {
+            for (let entry of entries) {
+                w = entry.contentRect.width;
+                h = entry.contentRect.height;
+                // Handle High-DPI (Retina) displays to prevent blurry text and graphics
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = w * dpr;
+                canvas.height = h * dpr;
+                ctx.scale(dpr, dpr);
+            }
+        });
+        resizeObserver.observe(canvas);
 
         const handleMouseMove = (e: MouseEvent) => {
             mouse.targetX = e.clientX;
@@ -132,14 +133,14 @@ export function AstrolabeCanvas() {
             const centerX = w / 2;
             const centerY = h / 2;
 
-            // Smart Autopilot: Engaging Lissajous curve only if the user hasn't interacted for 2 seconds
+            // Smart Autopilot: Engaging perfectly smooth circular orbit if user hasn't interacted for 2 seconds
             const isIdle = Date.now() - lastInteractionTime > 2000;
 
             if (isMobile && isIdle) {
-                const autoRadius = minDim * 0.4;
-                const autoSpeed = 0.005; // Slightly faster for visual impact
+                const autoRadius = minDim * 0.35; // Hover precisely over the inner/middle rings
+                const autoSpeed = 0.0015; // Slow, majestic rotation (exactly like desktop smooth hover)
                 mouse.targetX = centerX + Math.cos(time * autoSpeed) * autoRadius;
-                mouse.targetY = centerY + Math.sin(time * autoSpeed * 0.8) * (autoRadius * 0.8);
+                mouse.targetY = centerY + Math.sin(time * autoSpeed) * autoRadius;
             }
 
             // Lerp mouse (snappy on interaction, smooth on autopilot)
@@ -262,7 +263,7 @@ export function AstrolabeCanvas() {
         render();
 
         return () => {
-            window.removeEventListener("resize", resizeCanvas);
+            resizeObserver.disconnect();
             window.removeEventListener("mousemove", handleMouseMove);
             window.removeEventListener("mouseout", handleMouseLeave);
             window.removeEventListener("touchstart", handleTouchMove);
