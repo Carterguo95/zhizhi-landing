@@ -42,7 +42,7 @@ export function WaitlistForm() {
                 setFormState("success");
             } else if (result.error === "already_registered") {
                 setFormState("error");
-                setErrorMsg("该邮箱已在核心内测序列中 ✓");
+                setErrorMsg("该邮箱已在核心内测名单中 ✓");
                 shakeInput();
             } else {
                 setFormState("error");
@@ -130,7 +130,7 @@ export function WaitlistForm() {
                             transition={{ delay: 0.3 }}
                             className="text-lg font-serif text-white/90 mb-2"
                         >
-                            已成功为您预留核心内测席位
+                            欢迎加入 ZHIZHI 核心内测名单
                         </motion.p>
                         <motion.p
                             initial={{ opacity: 0, y: 10 }}
@@ -197,7 +197,7 @@ export function WaitlistForm() {
                                 ) : (
                                     <>
                                         <span className="relative z-10">
-                                            获取内测席位
+                                            Join Waitlist
                                         </span>
                                         <ArrowRight className="w-4 h-4 text-white/70 relative z-10 group-hover:translate-x-1 transition-transform" />
                                     </>
