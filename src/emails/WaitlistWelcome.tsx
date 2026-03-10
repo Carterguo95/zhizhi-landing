@@ -46,6 +46,14 @@ export const WaitlistWelcomeEmail = ({
                         </Link>
                     </Section>
 
+                    <Text style={paragraphCenter}>
+                        在此期间，您可以关注我们的 X 官方平台{" "}
+                        <Link style={link} href="https://x.com/zhizhiapp">
+                            @zhizhiapp
+                        </Link>
+                        ，获取最新研发动态。
+                    </Text>
+
                     <Hr style={hr} />
 
                     <Text style={footer}>
@@ -111,6 +119,18 @@ const button = {
     textAlign: "center" as const,
     display: "inline-block",
     padding: "12px 24px",
+    fontWeight: "500",
+};
+
+const paragraphCenter = {
+    ...paragraph,
+    textAlign: "center" as const,
+    marginTop: "16px",
+};
+
+const link = {
+    color: "#1a1a1a",
+    textDecoration: "underline",
     fontWeight: "500",
 };
 

@@ -47,7 +47,7 @@ export function FooterCTA() {
                     <div className="flex gap-6">
                         <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
                         <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-                        <a href="#" className="hover:text-white transition-colors">Twitter</a>
+                        <a href="https://x.com/zhizhiapp" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">X (Twitter)</a>
                     </div>
                 </div>
             </div>
