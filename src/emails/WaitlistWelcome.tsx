@@ -31,7 +31,7 @@ export const WaitlistWelcomeEmail = ({
                         您好，{email}：
                     </Text>
                     <Text style={paragraph}>
-                        感谢您的驻足。您已成功获得了 <strong>知之 ZHIZHI V1.0</strong> 核心内测版本的优先候补资格。
+                        感谢您的驻足。您已成功获得了 <strong>知之 ZHIZHI V1.0</strong> 核心内测版本的优先体验资格。
                     </Text>
                     <Text style={paragraph}>
                         在这里，古老的东方命理图谱正在与前沿的 AI 深度推理发生跨越时空的碰撞。知之不仅仅是一款解析工具，更是一个得益于千万级数据强化学习、能够一直伴随您共同进化的生命罗盘。
