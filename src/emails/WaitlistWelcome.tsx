@@ -22,27 +22,27 @@ export const WaitlistWelcomeEmail = ({
     return (
         <Html>
             <Head />
-            <Preview>欢迎加入 ZHIZHI 候补名单 | Welcome to ZHIZHI</Preview>
+            <Preview>欢迎加入 知之ZHIZHI 候补名单 | Welcome to ZHIZHI</Preview>
             <Body style={main}>
                 <Container style={container}>
-                    <Heading style={heading}>✨ 欢迎来到 ZHIZHI</Heading>
+                    <Heading style={heading}>✨ 欢迎加入知之 ZHIZHI</Heading>
 
                     <Text style={paragraph}>
-                        您好，
+                        您好，{email}：
                     </Text>
                     <Text style={paragraph}>
-                        感谢您 ({email}) 关注 ZHIZHI。您已经成功加入我们的内部测试候补名单！
+                        感谢您的驻足。您已成功获得了**知之 ZHIZHI V1.0** 核心内测版本的优先候补资格。
                     </Text>
                     <Text style={paragraph}>
-                        ZHIZHI 是一个基于千万级原生语料库构建的智能演化命理飞轮。我们正在结合古老的命运映射图谱与现代 AI 深度推理技术，旨在为您提供前所未有的颗粒度与精准解析。
+                        在这里，古老的东方命理图谱正在与前沿的 AI 深度推理（Deep Reasoning）发生跨越时空的碰撞。知之不仅仅是一款解析工具，更是一个得益于千万级数据强化学习、能够一直伴随您共同进化的生命罗盘。
                     </Text>
                     <Text style={paragraph}>
-                        目前我们正在进行 V1.0 版本的内部封闭开发和打磨。当您的内测权限正式开通时，我们会第一时间通过这封邮件通知您。
+                        为了保证绝佳的颗粒度与专注的演化算力，我们目前采用预约制逐步邀请开放。当您的专属通道就绪时，我们将在第一时间通过这封邮件向您发放内测密匙。
                     </Text>
 
                     <Section style={btnContainer}>
                         <Link style={button} href="https://zhizhi.one">
-                            访问官网了解最新动态
+                            重返知之星盘
                         </Link>
                     </Section>
 
