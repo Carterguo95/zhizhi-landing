@@ -42,7 +42,7 @@ export const WaitlistWelcomeEmail = ({
 
                     <Section style={btnContainer}>
                         <Link style={button} href="https://zhizhi.one">
-                            重返知之星盘
+                            重返知之ZHIZHI
                         </Link>
                     </Section>
 
