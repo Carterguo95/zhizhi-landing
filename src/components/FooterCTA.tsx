@@ -29,7 +29,6 @@ export function FooterCTA() {
                     className="text-base sm:text-lg text-muted-foreground font-light mb-6 max-w-xl mx-auto tracking-wide flex flex-col items-center gap-1"
                 >
                     <span>Your soul sanctuary, secured by local-first architecture.</span>
-                    <a href="#faq" className="text-sm underline underline-offset-4 decoration-white/30 hover:text-white transition-colors">Privacy Principles</a>
                 </motion.p>
 
                 <motion.p
