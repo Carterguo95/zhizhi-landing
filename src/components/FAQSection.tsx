@@ -62,15 +62,15 @@ export function FAQSection() {
                                     <dt>
                                         <button
                                             onClick={() => setOpenIndex(isOpen ? null : index)}
-                                            className="flex w-full items-start justify-between text-left text-white"
+                                            className="flex w-full items-start justify-between text-left text-white/90 group"
                                             aria-expanded={isOpen}
                                         >
-                                            <span className="text-base/7 font-semibold">{faq.question}</span>
+                                            <span className="text-lg font-serif font-medium tracking-wide group-hover:text-white transition-colors">{faq.question}</span>
                                             <span className="ml-6 flex h-7 items-center">
                                                 <ChevronDown
                                                     className={cn(
                                                         "h-5 w-5 flex-none transition-transform duration-300",
-                                                        isOpen ? "-rotate-180" : "rotate-0 text-neutral-400"
+                                                        isOpen ? "-rotate-180" : "rotate-0 text-white/40 group-hover:text-white/70"
                                                     )}
                                                     aria-hidden="true"
                                                 />
@@ -86,7 +86,7 @@ export function FAQSection() {
                                                 transition={{ duration: 0.3, ease: "easeInOut" }}
                                                 className="overflow-hidden pr-12"
                                             >
-                                                <p className="text-base/7 text-neutral-300 mt-4 pb-2">
+                                                <p className="text-base text-muted-foreground font-light leading-relaxed mt-4 pb-2">
                                                     {faq.answer}
                                                 </p>
                                             </motion.dd>
