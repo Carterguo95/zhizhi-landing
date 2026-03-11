@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://zhizhi.app/sitemap.xml',
+        sitemap: 'https://zhizhi.one/sitemap.xml',
     };
 }
