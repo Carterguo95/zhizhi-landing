@@ -5,17 +5,17 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "ZHIZHI | 东方哲学与本地计算的智能罗盘",
+    default: "ZHIZHI | AI 八字大数据推演与东方命理决策罗盘",
     template: "%s | ZHIZHI"
   },
-  description: "ZHIZHI 是一款将八字、紫微斗数等古典东方哲学体系与本地优先架构（Local-First）结合的高端 iOS 应用。极致隐私，精准推演。",
-  keywords: ["ZHIZHI", "八字", "紫微斗数", "占星", "AI算命", "隐私保护", "本地计算", "命盘推演", "量子罗盘"],
+  description: "结合东方命理精髓与全本地 AI 引擎，提供极致准确的八字流年测算。为您从每日运势解析到长期生命决策，构筑高隐私、高精度的专属护航罗盘。",
+  keywords: ["ZHIZHI", "AI八字", "东方命理", "命盘推演", "生命决策", "每日流年运势", "紫微斗数", "隐私算命", "本地计算"],
   alternates: {
     canonical: "https://zhizhi.app",
   },
   openGraph: {
-    title: "ZHIZHI | 东方易学与AI结合的高端智能罗盘",
-    description: "通过严密的传统术数模型结合前沿架构，保护您的灵魂资料库绝对私密。获取核心内测席位。",
+    title: "ZHIZHI | 高精 AI 驱动的东方命理与八字决策引擎",
+    description: "从每日气运到终生格局，全本地 AI 深度解析您的八字模型。不仅是测算，更是陪伴您长期决策的东方哲学罗盘。",
     url: "https://zhizhi.app", // Adjust if actual domain is different
     siteName: "ZHIZHI",
     locale: "zh_CN",
