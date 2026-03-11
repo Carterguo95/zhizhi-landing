@@ -90,14 +90,7 @@ export function HeroSection() {
                     We provide hyper-personalized insights for your daily life, career, and relationships.
                 </motion.p>
 
-                {/* Internal Links for AEO bots */}
-                <div className="flex justify-center gap-6 mb-8 text-sm font-medium text-white/40">
-                    <a href="#features" className="hover:text-white transition-colors">核心架构</a>
-                    <span className="opacity-30">•</span>
-                    <a href="#faq" className="hover:text-white transition-colors">极客解答</a>
-                </div>
 
-                {/* Waitlist Email Form */}
                 <WaitlistForm />
             </div>
         </section>

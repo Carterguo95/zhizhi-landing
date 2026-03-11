@@ -47,8 +47,8 @@ export function FAQSection() {
                 />
 
                 <div className="mx-auto max-w-4xl text-center">
-                    <h2 className="text-base/7 font-semibold text-neutral-400">关于极客玄学体验的解析</h2>
-                    <p className="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                    <h2 className="sr-only">关于极客玄学体验的解析</h2>
+                    <p aria-hidden="true" className="text-3xl md:text-5xl font-serif font-light mb-4 text-white/90 mt-2">
                         探索常见疑问解答
                     </p>
                 </div>

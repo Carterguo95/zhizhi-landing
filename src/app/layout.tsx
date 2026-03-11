@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "知之ZHIZHI | AI 八字命盘推演与东方命理决策引擎APP",
+    default: "知之ZHIZHI | AI 八字命盘推演与东方命理决策APP",
     template: "%s | ZHIZHI"
   },
   description: "结合东方命理精髓与大师精调AI 引擎，提供极致准确的八字流年测算。为您从每日运势解析到长期生命决策，构筑高隐私、高精度的专属护航罗盘。",

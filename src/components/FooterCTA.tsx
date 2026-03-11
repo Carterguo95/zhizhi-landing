@@ -26,10 +26,10 @@ export function FooterCTA() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-base sm:text-lg text-muted-foreground font-light mb-6 max-w-xl mx-auto tracking-wide"
+                    className="text-base sm:text-lg text-muted-foreground font-light mb-6 max-w-xl mx-auto tracking-wide flex flex-col items-center gap-1"
                 >
-                    运用前沿架构保护您的灵魂资料库。<br />
-                    了解我们在 <a href="#faq" className="underline underline-offset-4 decoration-white/30 hover:text-white transition-colors">隐私保护与本地计算</a> 上的克制与坚持。
+                    <span>Your soul sanctuary, secured by local-first architecture.</span>
+                    <a href="#faq" className="text-sm underline underline-offset-4 decoration-white/30 hover:text-white transition-colors">Privacy Principles</a>
                 </motion.p>
 
                 <motion.p
