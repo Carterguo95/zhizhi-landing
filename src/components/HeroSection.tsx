@@ -67,13 +67,14 @@ export function HeroSection() {
                     v1.0 Internal Test Access Open
                 </motion.div>
 
-                {/* Heading */}
+                {/* Heading (with hidden semantic keywords for AI bots) */}
                 <motion.h1
                     initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{ duration: 1, delay: 0.4 }}
                     className="text-4xl sm:text-5xl md:text-6xl font-serif font-light tracking-wide mb-6 text-foreground"
                 >
+                    <span className="sr-only">ZHIZHI: 基于本地计算的人工智能八字排盘与古典术数推演引擎。</span>
                     懂你的先天密码<br />
                     <span className="text-white/60">陪你的每一个当下</span>
                 </motion.h1>

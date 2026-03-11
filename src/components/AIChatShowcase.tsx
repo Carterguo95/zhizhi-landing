@@ -74,10 +74,11 @@ export function AIChatShowcase() {
             <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
                 {/* Left: Text Content */}
                 <div className="flex-1 space-y-6">
-                    <h2 className="text-3xl md:text-5xl font-serif font-light leading-tight text-white/90">
+                    <h2 className="sr-only">人工智能八字流年推演与玄学深层对话测试</h2>
+                    <p aria-hidden="true" className="text-3xl md:text-5xl font-serif font-light leading-tight text-white/90">
                         不只是看报告 <br />
                         更是<span className="text-primary font-medium px-2">与智者的对弈</span>
-                    </h2>
+                    </p>
                     <p className="text-lg text-muted-foreground font-light leading-relaxed">
                         命运并非定数，它是一场需要追问的对话。<br />
                         我们的 AI 模型深度学习了千万命理逻辑，能够针对你的“四柱”进行多维度的推演与陪伴。

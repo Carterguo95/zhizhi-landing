@@ -11,9 +11,10 @@ export function BentoGridFeatures() {
     return (
         <section className="relative py-32 container mx-auto px-6 z-10">
             <div className="mb-16 text-center">
-                <h2 className="text-3xl md:text-5xl font-serif font-light mb-4 text-white/90">
+                <h2 className="sr-only">基于本地计算的个人命运预测引擎核心特性</h2>
+                <p aria-hidden="true" className="text-3xl md:text-5xl font-serif font-light mb-4 text-white/90">
                     精密测算 <span className="text-white/40">与</span> 人生洞察
-                </h2>
+                </p>
                 <p className="text-muted-foreground text-lg max-w-xl mx-auto font-light">
                     Experience hyper-personal insights through our Apple-tier predictive engine.
                 </p>
