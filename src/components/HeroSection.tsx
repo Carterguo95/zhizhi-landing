@@ -81,13 +81,19 @@ export function HeroSection() {
                 {/* Subtitle */}
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
-                    className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-white/50 mb-10 leading-relaxed font-light mt-4"
+                    className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-white/60 mb-10 leading-relaxed font-light mt-4"
                 >
-                    Combining ancient destiny mapping with modern AI intelligence.
-                    We provide hyper-personalized insights for your daily life, career, and relationships.
+                    通过精密的天干地支与紫微斗数运算模型，结合全本地（Local-First）的安全沙盒引擎，为您在赛博时代构筑绝对私密的数字命运罗盘。
                 </motion.p>
+
+                {/* Internal Links for AEO bots */}
+                <div className="flex justify-center gap-6 mb-8 text-sm font-medium text-white/40">
+                    <a href="#features" className="hover:text-white transition-colors">核心架构</a>
+                    <span className="opacity-30">•</span>
+                    <a href="#faq" className="hover:text-white transition-colors">极客解答</a>
+                </div>
 
                 {/* Waitlist Email Form */}
                 <WaitlistForm />

@@ -28,7 +28,8 @@ export function FooterCTA() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-base sm:text-lg text-muted-foreground font-light mb-6 max-w-xl mx-auto tracking-wide"
                 >
-                    Silent time, traceable destiny. Decoded by AI.
+                    运用前沿架构保护您的灵魂资料库。<br />
+                    了解我们在 <a href="#faq" className="underline underline-offset-4 decoration-white/30 hover:text-white transition-colors">隐私保护与本地计算</a> 上的克制与坚持。
                 </motion.p>
 
                 <motion.p
