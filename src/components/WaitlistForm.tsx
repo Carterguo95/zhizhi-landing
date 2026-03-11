@@ -165,7 +165,9 @@ export function WaitlistForm() {
                                 {formState === "error" && (
                                     <div className="absolute -inset-[1px] rounded-full bg-red-500/30 pointer-events-none" />
                                 )}
+                                <label htmlFor="waitlist-email" className="sr-only">输入您的邮箱以获取内测资格</label>
                                 <input
+                                    id="waitlist-email"
                                     ref={inputRef}
                                     type="email"
                                     value={email}
@@ -174,6 +176,7 @@ export function WaitlistForm() {
                                     disabled={formState === "loading"}
                                     aria-label="Email address for waitlist"
                                     aria-invalid={formState === "error"}
+                                    aria-describedby={formState === "error" ? "waitlist-error" : undefined}
                                     className="relative w-full px-6 py-4 text-white bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full focus:outline-none focus:bg-white/[0.08] transition-all font-sans font-light placeholder:text-white/30 text-center sm:text-left shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] disabled:opacity-50 disabled:cursor-not-allowed"
                                 />
                             </div>
@@ -182,6 +185,8 @@ export function WaitlistForm() {
                             <button
                                 type="submit"
                                 disabled={formState === "loading"}
+                                aria-label="提交邮箱加入内测等待名单"
+                                aria-busy={formState === "loading"}
                                 className="group relative w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white font-medium text-[15px] overflow-hidden transition-all hover:bg-white/15 hover:scale-[1.02] cursor-pointer shadow-lg shadow-black/20 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 shrink-0"
                             >
                                 {/* Hover shimmer effect */}
@@ -209,6 +214,7 @@ export function WaitlistForm() {
                         <AnimatePresence>
                             {formState === "error" && errorMsg && (
                                 <motion.p
+                                    id="waitlist-error"
                                     initial={{ opacity: 0, y: -5, height: 0 }}
                                     animate={{
                                         opacity: 1,

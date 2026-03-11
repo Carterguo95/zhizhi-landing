@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   },
   description: "ZHIZHI 是一款将八字、紫微斗数等古典东方哲学体系与本地优先架构（Local-First）结合的高端 iOS 应用。极致隐私，精准推演。",
   keywords: ["ZHIZHI", "八字", "紫微斗数", "占星", "AI算命", "隐私保护", "本地计算", "命盘推演", "量子罗盘"],
+  alternates: {
+    canonical: "https://zhizhi.app",
+  },
   openGraph: {
     title: "ZHIZHI | 东方易学与AI结合的高端智能罗盘",
     description: "通过严密的传统术数模型结合前沿架构，保护您的灵魂资料库绝对私密。获取核心内测席位。",
