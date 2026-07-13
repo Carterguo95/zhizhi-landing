@@ -93,31 +93,42 @@ export function ProductJourney() {
                     <li><span>02</span>知之 · 为什么这件事与你有关</li>
                     <li><span>03</span>历史档案 · 昨天的判断如何延续到今天</li>
                 </ol>
+                <p className="journey-calibration" aria-hidden="true">RELATION DEPTH / 01—03</p>
             </aside>
 
             <div className="journey-stages">
                 {journey.map((item, index) => (
                     <motion.article
-                        className="product-stage"
+                        className={`product-stage stage-${item.variant}`}
                         key={item.label}
-                        style={{
-                            background: `linear-gradient(135deg, color-mix(in srgb, ${item.colors[0]} 28%, var(--surface)), var(--surface) 54%, color-mix(in srgb, ${item.colors[1]} 22%, var(--surface)))`,
-                        }}
                         initial={{ opacity: 0, y: 48 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.75, delay: index * 0.04, ease: [0.2, 0.8, 0.2, 1] }}
+                        transition={{ duration: 0.85, delay: index * 0.04, ease: [0.16, 1, 0.3, 1] }}
                     >
+                        <div
+                            className="stage-spectrum"
+                            style={{ background: `linear-gradient(115deg, ${item.colors[0]}, color-mix(in srgb, ${item.colors[1]} 72%, var(--canvas)))` }}
+                            aria-hidden="true"
+                        />
+                        <span className="stage-register" aria-hidden="true">ARCHIVE / {item.index}</span>
                         <div className="product-stage-copy">
                             <p className="product-stage-meta">{item.index} · {item.label}</p>
                             <h3>{item.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h3>
                             <p>{item.body}</p>
                         </div>
                         <PhoneScreen variant={item.variant} />
+                        <motion.div
+                            className="stage-scan-line"
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.1, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                            aria-hidden="true"
+                        />
                     </motion.article>
                 ))}
             </div>
         </section>
     );
 }
-

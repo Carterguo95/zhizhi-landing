@@ -1,5 +1,6 @@
 import { FAQSection } from "@/components/FAQSection";
 import { FooterCTA } from "@/components/FooterCTA";
+import { GlobalRefraction } from "@/components/GlobalRefraction";
 import { HeroSection } from "@/components/HeroSection";
 import { NarrativeFlow } from "@/components/NarrativeFlow";
 import { ProductJourney } from "@/components/ProductJourney";
@@ -18,8 +19,9 @@ export default function Home() {
     };
 
     return (
-        <main>
+        <main id="main-content">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+            <GlobalRefraction />
             <SiteNav />
             <HeroSection />
             <NarrativeFlow />

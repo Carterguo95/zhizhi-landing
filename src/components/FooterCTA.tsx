@@ -7,6 +7,8 @@ export function FooterCTA() {
     return (
         <footer className="site-footer" id="waitlist">
             <div className="footer-refraction" aria-hidden="true" />
+            <div className="footer-orbit footer-orbit-one" aria-hidden="true" />
+            <div className="footer-orbit footer-orbit-two" aria-hidden="true" />
             <div className="page-shell">
                 <motion.div
                     className="footer-grid"

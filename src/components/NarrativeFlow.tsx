@@ -34,8 +34,8 @@ const models = [
 ];
 
 const reveal = {
-    hidden: { opacity: 0, y: 34 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, clipPath: "inset(0 100% 0 0)" },
+    visible: { opacity: 1, clipPath: "inset(0 0% 0 0)" },
 };
 
 export function NarrativeFlow() {
@@ -43,12 +43,21 @@ export function NarrativeFlow() {
         <>
             <section className="section section-questions page-shell" aria-labelledby="questions-title">
                 <motion.div
+                    className="question-spectrum-plate"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+                    aria-hidden="true"
+                />
+                <p className="archive-side-label" aria-hidden="true">BEFORE LANGUAGE / EXPOSURE 02</p>
+                <motion.div
                     className="section-heading split-heading"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-120px" }}
                     variants={reveal}
-                    transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
                     <div>
                         <p className="section-kicker">01 / 在语言之前</p>
@@ -70,6 +79,7 @@ export function NarrativeFlow() {
                         <motion.div key={item.label} className="question-row" variants={reveal}>
                             <span className="question-label">{item.label}</span>
                             <span className="question-copy">{item.question}</span>
+                            <span className="question-coordinate" aria-hidden="true">Q.{String(questions.indexOf(item) + 1).padStart(2, "0")}</span>
                             <ArrowUpRight aria-hidden="true" />
                         </motion.div>
                     ))}
@@ -78,6 +88,9 @@ export function NarrativeFlow() {
 
             <section className="section section-models" id="method" aria-labelledby="models-title">
                 <div className="model-refraction" aria-hidden="true" />
+                <div className="model-orbit model-orbit-outer" aria-hidden="true" />
+                <div className="model-orbit model-orbit-inner" aria-hidden="true" />
+                <p className="model-rail" aria-hidden="true">CALIBRATION PLATE · SELF / TIMING / INTENT</p>
                 <div className="page-shell model-content">
                     <motion.div
                         className="section-heading split-heading"
@@ -85,7 +98,7 @@ export function NarrativeFlow() {
                         whileInView="visible"
                         viewport={{ once: true, margin: "-100px" }}
                         variants={reveal}
-                        transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <div>
                             <p className="section-kicker">02 / 它如何理解</p>
@@ -104,7 +117,8 @@ export function NarrativeFlow() {
                         transition={{ staggerChildren: 0.1 }}
                     >
                         {models.map((model) => (
-                            <motion.article className="model-item" key={model.title} variants={reveal}>
+                            <motion.article className={`model-item model-item-${model.index}`} key={model.title} variants={reveal}>
+                                <span className="model-index-ghost" aria-hidden="true">{model.index}</span>
                                 <span className="model-signal" style={{ background: model.color, boxShadow: `0 0 28px ${model.color}` }} />
                                 <p className="model-meta">{model.index} · {model.label}</p>
                                 <div className="model-copy">
@@ -119,4 +133,3 @@ export function NarrativeFlow() {
         </>
     );
 }
-

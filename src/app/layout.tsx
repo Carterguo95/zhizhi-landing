@@ -35,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body className="antialiased">
+        <a className="skip-link" href="#main-content">跳到主要内容</a>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
