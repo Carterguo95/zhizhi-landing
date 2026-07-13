@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=Fragment+Mono:ital@0;1&family=Noto+Serif+SC:wght@400;500&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -17,9 +16,9 @@
   --signal-amber: #d5a95c;
   --deep-teal: #183b39;
   --error: #9f4b4b;
-  --font-serif: "Noto Serif SC", "Songti SC", "STSong", serif;
-  --font-sans: "Barlow Condensed", "PingFang SC", "Hiragino Sans GB", sans-serif;
-  --font-mono: "Fragment Mono", "SFMono-Regular", monospace;
+  --font-serif: var(--font-noto-serif), "Songti SC", "STSong", serif;
+  --font-sans: var(--font-barlow-condensed), "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --font-mono: var(--font-fragment-mono), "SFMono-Regular", monospace;
   --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
   --shadow-hardware: 0 30px 80px rgba(47, 55, 50, 0.19);
 }
@@ -206,7 +205,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .model-meta { margin: 12px 0 0; color: rgba(32,38,37,.62); font-family: var(--font-mono); font-size: 8px; letter-spacing: .07em; }
 .model-copy { position: relative; z-index: 2; margin-top: auto; }
 .model-copy h3 { margin: 0 0 18px; font-family: var(--font-serif); font-size: 34px; font-weight: 400; }
-.model-copy p { margin: 0; color: rgba(32,38,37,.68); font-size: 15px; line-height: 1.8; }
+.model-copy p { margin: 0; color: rgba(32,38,37,.68); font-size: 16px; line-height: 1.8; }
 
 /* Product relationship */
 .section-journey { display: grid; grid-template-columns: minmax(300px,.74fr) minmax(580px,1.46fr); gap: 7vw; padding-top: 165px; padding-bottom: 110px; }
@@ -230,7 +229,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .product-stage-meta { margin: 0; font-family: var(--font-mono); font-size: 8px; letter-spacing: .1em; }
 .product-stage-copy h3 { margin: 25px 0 20px; font-family: var(--font-serif); font-size: clamp(36px,4vw,56px); font-weight: 400; line-height: 1.18; letter-spacing: -.055em; }
 .product-stage-copy h3 span { display: block; }
-.product-stage-copy > p:last-child { max-width: 420px; margin: 0; color: var(--graphite); font-size: 15px; line-height: 1.82; }
+.product-stage-copy > p:last-child { max-width: 420px; margin: 0; color: var(--graphite); font-size: 16px; line-height: 1.82; }
 .product-phone { position: relative; z-index: 2; width: min(290px,100%); aspect-ratio: 9/19.2; margin-inline: auto; border: 7px solid var(--ink); border-radius: 48px; padding: 11px; background: var(--ink); box-shadow: var(--shadow-hardware); transform: rotate(2deg); transition: transform 420ms var(--ease-enter); }
 .stage-insight .product-phone { order: -1; transform: rotate(-2deg); }
 .product-stage:hover .product-phone { transform: rotate(-.5deg) translateY(-9px); }
@@ -278,7 +277,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .faq-item svg { width: 17px; transition: transform 220ms var(--ease-enter); }
 .faq-item.is-open svg { transform: rotate(45deg); }
 .faq-item dd { overflow: hidden; margin: 0; padding-left: 60px; }
-.faq-item dd p { max-width: 680px; margin: 0; padding: 0 0 28px; color: var(--graphite); font-size: 14px; line-height: 1.85; }
+.faq-item dd p { max-width: 680px; margin: 0; padding: 0 0 28px; color: var(--graphite); font-size: 16px; line-height: 1.85; }
 
 /* Footer */
 .site-footer { position: relative; overflow: hidden; padding: 120px 0 32px; color: var(--canvas); background: var(--deep-teal); }

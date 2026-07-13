@@ -1,6 +1,29 @@
 import type { Metadata } from "next";
+import { Barlow_Condensed, Fragment_Mono, Noto_Serif_SC } from "next/font/google";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
+
+const displayFont = Noto_Serif_SC({
+  variable: "--font-noto-serif",
+  weight: ["400", "500"],
+  subsets: ["latin"],
+  display: "swap",
+  preload: false,
+});
+
+const interfaceFont = Barlow_Condensed({
+  variable: "--font-barlow-condensed",
+  weight: ["400", "500", "600"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const dataFont = Fragment_Mono({
+  variable: "--font-fragment-mono",
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -34,7 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body className="antialiased">
+      <body className={`${displayFont.variable} ${interfaceFont.variable} ${dataFont.variable} antialiased`}>
         <a className="skip-link" href="#main-content">跳到主要内容</a>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
