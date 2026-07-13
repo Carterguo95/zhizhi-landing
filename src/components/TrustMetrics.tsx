@@ -1,65 +1,32 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { ShieldCheck } from "lucide-react";
 
 export function TrustMetrics() {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-        if (isInView) {
-            let start: number | null = null;
-            const target = 328500;
-            const duration = 2500; // 2.5 seconds
-
-            const updateCounter = (timestamp: number) => {
-                if (!start) start = timestamp;
-                const progress = Math.min((timestamp - start) / duration, 1);
-
-                // easeOutExpo for a very smooth dramatic slow down at the end
-                const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-
-                setCount(Math.floor(easeOutExpo * target));
-
-                if (progress < 1) {
-                    requestAnimationFrame(updateCounter);
-                }
-            };
-
-            requestAnimationFrame(updateCounter);
-        }
-    }, [isInView]);
-
     return (
-        <section className="relative py-24 border-y border-white/5 bg-white/[0.02] overflow-hidden" ref={ref}>
-            <div className="container mx-auto px-6 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8 }}
-                    className="flex flex-col items-center justify-center space-y-4"
-                >
-                    <p className="text-white/40 font-mono text-sm tracking-widest uppercase mb-2">
-                        驱动底层架构进化的原生累积训练命盘
-                    </p>
-                    <div className="flex items-baseline gap-2">
-                        <span className="text-5xl sm:text-6xl md:text-8xl font-serif font-light text-white tracking-tighter">
-                            {count.toLocaleString()}<span className="text-accent">+</span>
-                        </span>
+        <section className="section section-trust page-shell" id="trust" aria-labelledby="trust-title">
+            <motion.div
+                className="trust-panel"
+                initial={{ opacity: 0, y: 42 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.75, ease: [0.2, 0.8, 0.2, 1] }}
+            >
+                <div className="trust-refraction" aria-hidden="true" />
+                <div>
+                    <p className="section-kicker">04 / 信任边界</p>
+                    <h2 id="trust-title">不是预测一条<br />确定的命运，<br />是更早看见<br />选择的结构。</h2>
+                </div>
+                <div className="trust-copy">
+                    <ShieldCheck aria-hidden="true" />
+                    <p><strong>知之首先是一套东方文化中的人生理解框架，其次是一种决策辅助工具。</strong></p>
+                    <p>它不替你做决定，也不承诺百分百准确。信任来自文化上的熟悉感、个体层面的被理解，以及长期使用中的持续验证。</p>
+                    <div className="trust-points">
+                        <span>稳定画像</span><span>当下时机</span><span>持续校准</span>
                     </div>
-                    <p className="text-white/60 text-base sm:text-lg md:text-xl font-light mt-6 max-w-5xl mx-auto leading-relaxed">
-                        基于万千真实命盘构建的进化模型，你的每一次交互都在提供强化学习反馈，<br className="hidden md:block" />
-                        随着驱动算力演进和数据扩张规模法则（Scaling Laws），为你带来前所未有的颗粒度与精准解析。
-                    </p>
-                </motion.div>
-            </div>
-
-            {/* Decorative side lines */}
-            <div className="absolute left-0 top-0 w-1/4 h-[1px] bg-gradient-to-r from-transparent to-accent/20" />
-            <div className="absolute right-0 bottom-0 w-1/4 h-[1px] bg-gradient-to-l from-transparent to-accent/20" />
+                </div>
+            </motion.div>
         </section>
     );
 }

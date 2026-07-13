@@ -1,98 +1,85 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { AstrolabeCanvas } from "@/components/AstrolabeCanvas";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { ArrowDownRight } from "lucide-react";
+import type { CSSProperties } from "react";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
+const branches = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
+
 export function HeroSection() {
+    const pointerX = useMotionValue(0);
+    const pointerY = useMotionValue(0);
+    const smoothX = useSpring(pointerX, { stiffness: 90, damping: 22 });
+    const smoothY = useSpring(pointerY, { stiffness: 90, damping: 22 });
+    const bandX = useTransform(smoothX, [-0.5, 0.5], [-18, 18]);
+    const bandY = useTransform(smoothY, [-0.5, 0.5], [-12, 12]);
+    const bandRotate = useTransform(smoothX, [-0.5, 0.5], [-14, -7]);
+
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20">
-            {/* Abstract Background Aura */}
-            <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 0.15, scale: 1 }}
-                    transition={{ duration: 4, ease: "easeOut", repeat: Infinity, repeatType: "reverse" }}
-                    className="w-[800px] h-[800px] rounded-full absolute"
-                    style={{
-                        background: "radial-gradient(circle, var(--color-accent) 0%, transparent 60%)",
-                        filter: "blur(60px)",
-                        zIndex: -1,
-                    }}
-                />
-                <motion.div
-                    initial={{ opacity: 0, scale: 1.2 }}
-                    animate={{ opacity: 0.1, scale: 1 }}
-                    transition={{ duration: 5, ease: "easeOut", repeat: Infinity, repeatType: "reverse", delay: 1 }}
-                    className="absolute w-[600px] h-[600px] rounded-full"
-                    style={{
-                        background: "radial-gradient(circle, var(--color-primary) 0%, transparent 70%)",
-                        filter: "blur(80px)",
-                        zIndex: -1,
-                    }}
-                />
+        <section className="hero-section page-shell" id="top" aria-labelledby="hero-title">
+            <motion.div
+                className="hero-copy"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
+            >
+                <p className="section-kicker section-kicker-line">主动式人生决策系统</p>
+                <h1 id="hero-title">提前看见，<br />你此刻真正<br />该问的问题。</h1>
+                <p className="hero-lead">
+                    不是替你决定。知之从你的稳定画像与当下时机出发，把模糊感受组织成值得理解的问题，再陪你走向行动。
+                </p>
+                <div className="hero-form" id="hero-waitlist">
+                    <WaitlistForm />
+                </div>
+                <a className="hero-scroll-cue" href="#method">
+                    <span>看见知之如何工作</span>
+                    <ArrowDownRight aria-hidden="true" />
+                </a>
+            </motion.div>
 
-                {/* Masking Occult Disk: Blurs global stars directly behind the compass but lets ambient glow pass through */}
-                <div
-                    className="absolute w-[150vw] md:w-[1000px] h-[150vw] md:h-[1000px] rounded-full pointer-events-none"
-                    style={{
-                        backdropFilter: "blur(40px)",
-                        WebkitBackdropFilter: "blur(40px)",
-                        maskImage: "radial-gradient(circle, black 30%, transparent 65%)",
-                        WebkitMaskImage: "radial-gradient(circle, black 30%, transparent 65%)",
-                        zIndex: 0,
-                    }}
-                />
-
-                {/* 2026 Interactive Canvas */}
-                <AstrolabeCanvas />
-            </div>
-
-            {/* Monospace Data Overlay (Top Right) */}
-            <div className="absolute top-12 right-12 z-20 hidden lg:flex flex-col items-end gap-1 opacity-40 font-mono text-[10px] text-white/60 select-none">
-                <span>[SYS_CALC_SEQ]// 89A12.FX</span>
-                <span>LAT: 39.9N, LON: 116.4E</span>
-                <span>SYNC: STABLE // AURA_ON</span>
-            </div>
-
-            <div className="relative z-10 container mx-auto px-6 text-center">
-                {/* Badge */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 mb-8 text-xs font-medium text-white/80 tracking-wide"
-                >
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                    v1.0 Internal Test Access Open
-                </motion.div>
-
-                {/* Heading (with hidden semantic keywords for AI bots) */}
-                <motion.h1
-                    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    transition={{ duration: 1, delay: 0.4 }}
-                    className="text-4xl sm:text-5xl md:text-6xl font-serif font-light tracking-wide mb-6 text-foreground"
-                >
-                    <span className="sr-only">ZHIZHI: 基于本地计算的人工智能八字排盘与古典术数推演引擎。</span>
-                    懂你的先天密码<br />
-                    <span className="text-white/60">陪你的每一个当下</span>
-                </motion.h1>
-
-                {/* Subtitle */}
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-white/50 mb-10 leading-relaxed font-light mt-4"
-                >
-                    Combining ancient destiny mapping with modern AI intelligence.
-                    We provide hyper-personalized insights for your daily life, career, and relationships.
-                </motion.p>
-
-
-                <WaitlistForm />
-            </div>
+            <motion.div
+                className="time-instrument"
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.1, delay: 0.12, ease: [0.2, 0.8, 0.2, 1] }}
+                onPointerMove={(event) => {
+                    const bounds = event.currentTarget.getBoundingClientRect();
+                    pointerX.set((event.clientX - bounds.left) / bounds.width - 0.5);
+                    pointerY.set((event.clientY - bounds.top) / bounds.height - 0.5);
+                }}
+                onPointerLeave={() => {
+                    pointerX.set(0);
+                    pointerY.set(0);
+                }}
+            >
+                <motion.div className="time-refraction-band" style={{ x: bandX, y: bandY, rotate: bandRotate }} aria-hidden="true" />
+                <div className="time-exposure" aria-hidden="true" />
+                <div className="time-dial">
+                    <div className="time-ring time-ring-outer" aria-hidden="true">
+                        {branches.map((branch, index) => (
+                            <span
+                                key={branch}
+                                className="branch-mark"
+                                style={{ "--branch-angle": `${index * 30}deg` } as CSSProperties}
+                            >
+                                {branch}
+                            </span>
+                        ))}
+                    </div>
+                    <div className="time-ring time-ring-middle" aria-hidden="true" />
+                    <div className="time-ring time-ring-inner" aria-hidden="true" />
+                    <div className="today-judgement">
+                        <p className="today-meta">今日 · 丙戌日</p>
+                        <h2>先稳住边界，<br />再推动变化。</h2>
+                        <p>事业主题正在升温。今天值得先看见的，是你对“时机”的犹豫。</p>
+                        <div className="today-divider" />
+                        <span>查看完整解析 <b>→</b></span>
+                    </div>
+                </div>
+                <p className="instrument-data instrument-data-top">FORTUNE DATE 2026.07.13<br />PROFILE 01 · OWNER</p>
+                <p className="instrument-data instrument-data-bottom">SELF × TIMING × INTENT<br />ARCHIVE UPDATED TODAY</p>
+            </motion.div>
         </section>
     );
 }
