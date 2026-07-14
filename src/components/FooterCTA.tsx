@@ -1,56 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { WaitlistForm } from "@/components/WaitlistForm";
 
 export function FooterCTA() {
     return (
-        <section className="relative py-32 overflow-hidden flex flex-col items-center justify-center text-center z-10 border-t border-white/5">
-            {/* Background ambient light */}
-            <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-                <div className="w-[800px] h-[400px] rounded-full bg-accent/10 blur-[100px]" />
-            </div>
-
-            <div className="relative z-10 container mx-auto px-6">
-                <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
+        <footer className="site-footer" id="waitlist">
+            <div className="footer-refraction" aria-hidden="true" />
+            <div className="footer-orbit footer-orbit-one" aria-hidden="true" />
+            <div className="footer-orbit footer-orbit-two" aria-hidden="true" />
+            <div className="page-shell">
+                <motion.div
+                    className="footer-grid"
+                    initial={{ opacity: 0, y: 36 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="text-4xl sm:text-5xl md:text-6xl font-serif font-light mb-8 text-white/90 tracking-wide"
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.75, ease: [0.2, 0.8, 0.2, 1] }}
                 >
-                    流年无声，<span className="text-white/40">知之有迹</span>
-                </motion.h2>
-
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-base sm:text-lg text-muted-foreground font-light mb-6 max-w-xl mx-auto tracking-wide flex flex-col items-center gap-1"
-                >
-                    <span>Your soul sanctuary, secured by local-first architecture.</span>
-                </motion.p>
-
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-sm text-white/30 font-mono tracking-widest uppercase"
-                >
-                    ZHIZHI · 知之
-                </motion.p>
-
-                {/* Footer Notes */}
-                <div className="mt-32 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between text-xs text-muted-foreground gap-4">
-                    <p>© 2026 ZHIZHI App. All rights reserved.</p>
-                    <div className="flex gap-6">
-                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-                        <a href="https://x.com/zhizhiapp" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">X (Twitter)</a>
+                    <div>
+                        <p className="section-kicker">CORE BETA · 2026</p>
+                        <h2>流年无声，<br />知之有迹。</h2>
+                        <p>留下邮箱，内测开放时我们会通知你。一起看看，知之能不能越来越懂你。</p>
                     </div>
+                    <WaitlistForm inverted />
+                </motion.div>
+                <div className="footer-bottom">
+                    <span>ZHIZHI · TIME REFRACTION ARCHIVE</span>
+                    <nav aria-label="页脚导航">
+                        <a href="#faq">常见问题</a>
+                        <a href="#">隐私政策</a>
+                        <a href="#">使用条款</a>
+                        <a href="https://x.com/zhizhiapp" target="_blank" rel="noopener noreferrer">X</a>
+                    </nav>
                 </div>
             </div>
-        </section>
+        </footer>
     );
 }
