@@ -15,9 +15,9 @@ export function SiteNav() {
                     <span className="site-brand-latin">ZHIZHI</span>
                 </a>
                 <div className="site-nav-links" aria-label="页面章节">
-                    <a href="#method">如何工作</a>
-                    <a href="#journey">产品体验</a>
-                    <a href="#trust">信任边界</a>
+                    <a href="#method">知之怎么懂你</a>
+                    <a href="#journey">你会怎么用</a>
+                    <a href="#trust">关于命理判断</a>
                 </div>
                 <a className="button button-primary button-small" href="#waitlist">
                     申请内测
@@ -26,4 +26,3 @@ export function SiteNav() {
         </header>
     );
 }
-

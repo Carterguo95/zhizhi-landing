@@ -13,22 +13,22 @@ const models = [
     {
         index: "01",
         label: "SELF",
-        title: "自我模型",
-        copy: "建立相对稳定的人生底层画像，理解你的驱动力、关系模式、风险偏好与成长课题。",
+        title: "你的底色",
+        copy: "从个人命盘中了解你习惯怎么做选择、怎样与人相处，以及哪些问题容易反复出现。",
         color: "var(--archive-blue)",
     },
     {
         index: "02",
         label: "TIMING",
-        title: "时机模型",
-        copy: "结合流年、流月与流日的变化，判断此刻最值得被看见的主题、机会与张力。",
+        title: "现在的时机",
+        copy: "结合流年、流月和每天的变化，看看最近哪些事更值得留意，什么时候适合推进。",
         color: "var(--butter)",
     },
     {
         index: "03",
         label: "INTENT",
-        title: "意图模型",
-        copy: "从历史足迹和当前状态中，提前组织那些你还没有准确说出口的重要问题。",
+        title: "你真正关心的事",
+        copy: "记住你看过、问过和保存过的内容，慢慢分清你这次真正想解决的是什么。",
         color: "var(--soft-rose)",
     },
 ];
@@ -60,11 +60,11 @@ export function NarrativeFlow() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
                     <div>
-                        <p className="section-kicker">01 / 在语言之前</p>
-                        <h2 id="questions-title">重要的问题，<br />往往先以感觉出现。</h2>
+                        <p className="section-kicker">01 / 从说不清的感觉开始</p>
+                        <h2 id="questions-title">你不必先想好，<br />到底该问什么。</h2>
                     </div>
                     <p className="section-intro">
-                        人在真正需要判断时，很少带着一个完整问题而来。知之先看见那份没有被组织的焦虑，再把它变成可以理解、可以追问、可以行动的主题。
+                        工作不顺、关系反复，心里总觉得哪里不对。知之会先把这种感觉整理成一个具体问题，让你看懂原因，也知道接下来能做什么。
                     </p>
                 </motion.div>
 
@@ -101,11 +101,11 @@ export function NarrativeFlow() {
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <div>
-                            <p className="section-kicker">02 / 它如何理解</p>
-                            <h2 id="models-title">一套持续理解你<br />与当下的系统。</h2>
+                            <p className="section-kicker">02 / 知之怎么理解你</p>
+                            <h2 id="models-title">它会记得你是谁，<br />也会留意时机。</h2>
                         </div>
                         <p className="section-intro">
-                            知之把命理结构、时间变化和用户上下文组织成三个相互校准的模型。你看到的不是技术堆栈，而是更贴近自己的判断。
+                            知之会结合你的个人命盘、当下时间和过去的记录。用得越久，它越能分清哪些只是短暂情绪，哪些值得你认真处理。
                         </p>
                     </motion.div>
 

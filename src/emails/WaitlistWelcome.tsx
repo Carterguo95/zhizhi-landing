@@ -22,32 +22,32 @@ export const WaitlistWelcomeEmail = ({
     return (
         <Html>
             <Head />
-            <Preview>欢迎加入知之 ZHIZHI 核心内测名单 | Welcome to ZHIZHI</Preview>
+            <Preview>你的知之内测申请已收到</Preview>
             <Body style={main}>
                 <Container style={container}>
-                    <Heading style={heading}>✨ 欢迎加入知之 ZHIZHI</Heading>
+                    <Heading style={heading}>你的内测申请已收到</Heading>
 
                     <Text style={paragraph}>
-                        您好，{email}：
+                        你好：
                     </Text>
                     <Text style={paragraph}>
-                        感谢您的驻足。您已成功获得了 <strong>知之 ZHIZHI V1.0</strong> 核心内测版本的优先体验资格。
+                        谢谢你愿意来了解知之。我们已经把你加入内测名单。
                     </Text>
                     <Text style={paragraph}>
-                        在这里，古老的东方命理图谱正在与前沿的 AI 深度推理发生跨越时空的碰撞。知之不仅仅是一款解析工具，更是一个得益于千万级数据强化学习、能够一直伴随您共同进化的生命罗盘。
+                        知之会结合你的个人命盘、当下时间和过去的记录，帮你看见最近最值得留意的问题，再一步步把原因和选择问清楚。
                     </Text>
                     <Text style={paragraph}>
-                        为了保证绝佳的颗粒度与专注的演化算力，我们目前采用预约制逐步邀请开放。当您的专属通道就绪时，我们将在第一时间通过这封邮件向您发放内测密匙。
+                        我们会分批开放体验。轮到你时，会通过 {email} 发送邀请。
                     </Text>
 
                     <Section style={btnContainer}>
                         <Link style={button} href="https://zhizhi.one">
-                            重返知之ZHIZHI
+                            回到知之官网
                         </Link>
                     </Section>
 
                     <Text style={paragraphCenter}>
-                        在此期间，您可以关注我们的 X 官方平台{" "}
+                        想了解产品进展，可以关注我们的 X 账号{" "}
                         <Link style={link} href="https://x.com/zhizhiapp">
                             @zhizhiapp
                         </Link>

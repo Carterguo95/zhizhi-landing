@@ -20,7 +20,7 @@ export function FooterCTA() {
                     <div>
                         <p className="section-kicker">CORE BETA · 2026</p>
                         <h2>流年无声，<br />知之有迹。</h2>
-                        <p>加入知之核心内测，让每一次判断都成为更理解自己的开始。</p>
+                        <p>留下邮箱，内测开放时我们会通知你。一起看看，知之能不能越来越懂你。</p>
                     </div>
                     <WaitlistForm inverted />
                 </motion.div>

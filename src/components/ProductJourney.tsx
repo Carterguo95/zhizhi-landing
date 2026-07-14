@@ -1,81 +1,55 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-type ScreenVariant = "today" | "insight" | "archive";
+type ScreenVariant = "today" | "insight" | "reading";
 
 const journey = [
     {
         index: "01",
         label: "TODAY",
         nav: "首页",
-        title: "首页不是信息流，\n是每日行动入口。",
-        body: "当日干支成为时间锚点。今日判断和场景建议把复杂结构压缩成一个清晰的优先级。",
+        title: "每天打开，\n先看今天最该注意什么。",
+        body: "首页会根据当天的时间变化，给你一个最值得先看的主题和可以马上做的建议。",
         variant: "today" as ScreenVariant,
-        colors: ["var(--archive-blue)", "var(--butter)"],
+        image: "/product/zhizhi-home.jpg",
+        alt: "知之首页，展示今日判断与事业、健康场景建议",
     },
     {
         index: "02",
         label: "INSIGHT",
         nav: "知之",
-        title: "先被一个主题命中，\n再进入深度解释。",
-        body: "大卡建立情绪和信任，中型卡提供结构化解释，追问把理解继续推向具体选择。",
+        title: "觉得说中了，\n就继续把它问清楚。",
+        body: "知之先告诉你这件事为什么会反复出现。你可以接着追问，直到它和眼前的选择真正连起来。",
         variant: "insight" as ScreenVariant,
-        colors: ["var(--soft-rose)", "var(--seafoam)"],
+        image: "/product/zhizhi-insight.jpg",
+        alt: "知之洞察页，展示感情运势卡片与逐项解读",
     },
     {
         index: "03",
-        label: "ARCHIVE",
-        nav: "历史档案",
-        title: "一次判断被保存，\n长期关系才真正开始。",
-        body: "历史记录人生问题如何变化，并为之后的个性化校准和主动推荐建立连续上下文。",
-        variant: "archive" as ScreenVariant,
-        colors: ["var(--seafoam)", "var(--archive-blue)"],
+        label: "READING",
+        nav: "完整解读",
+        title: "把完整解读看完，\n再问你真正关心的事。",
+        body: "财运、关系和健康会被放在同一份解读里。看完之后，你可以沿着最在意的问题继续追问。",
+        variant: "reading" as ScreenVariant,
+        image: "/product/zhizhi-reading.jpg",
+        alt: "知之完整解读页，展示财运、感情、健康分析与继续追问入口",
     },
 ];
 
-function PhoneScreen({ variant }: { variant: ScreenVariant }) {
+function ProductScreen({ image, alt }: { image: string; alt: string }) {
     return (
-        <div className="product-phone" aria-hidden="true">
+        <div className="product-phone">
             <div className="product-phone-screen">
-                <div className="phone-status"><span>9:41</span><span>知之</span></div>
-                {variant === "today" && (
-                    <>
-                        <div className="phone-date"><strong>丙戌日</strong><span>丙午年 · 乙未月</span></div>
-                        <div className="phone-card phone-card-blue">
-                            <small>今日判断</small>
-                            <h4>先确认方向，<br />再扩大投入。</h4>
-                            <p>今天适合把模糊承诺变成明确条件。</p>
-                        </div>
-                        <div className="phone-row"><span>事业 · 值得追问</span><b>→</b></div>
-                        <div className="phone-row"><span>关系 · 保持余地</span><b>→</b></div>
-                    </>
-                )}
-                {variant === "insight" && (
-                    <>
-                        <div className="phone-date"><strong>你此刻的<br />关系课题</strong></div>
-                        <div className="phone-card phone-card-rose">
-                            <small>关系 · 边界</small>
-                            <h4>你不是不愿意靠近，<br />而是在等待确定性。</h4>
-                            <p>值得先追问的是：你要的是答案，还是行动？</p>
-                        </div>
-                        <div className="phone-row"><span>为什么我总在等待？</span><b>→</b></div>
-                        <div className="phone-row"><span>这段关系何时适合推进？</span><b>→</b></div>
-                    </>
-                )}
-                {variant === "archive" && (
-                    <>
-                        <div className="phone-date"><strong>七月</strong><span>选择与边界</span></div>
-                        <div className="phone-row"><span>07.13 · 事业方向</span><b>已追问</b></div>
-                        <div className="phone-row"><span>07.09 · 关系节奏</span><b>已保存</b></div>
-                        <div className="phone-row"><span>07.02 · 个人状态</span><b>已验证</b></div>
-                        <div className="phone-card phone-card-seafoam">
-                            <small>本月反复出现的主题</small>
-                            <h4>清晰边界，<br />比快速推进更重要。</h4>
-                            <p>知之会继续观察这个主题如何影响你的选择。</p>
-                        </div>
-                    </>
-                )}
+                <Image
+                    src={image}
+                    alt={alt}
+                    width={736}
+                    height={1600}
+                    sizes="(max-width: 760px) 78vw, 380px"
+                    loading="lazy"
+                />
             </div>
         </div>
     );
@@ -85,15 +59,19 @@ export function ProductJourney() {
     return (
         <section className="section section-journey page-shell" id="journey" aria-labelledby="journey-title">
             <aside className="journey-intro">
-                <p className="section-kicker">03 / 一段持续关系</p>
-                <h2 id="journey-title">从今天，<br />到长期理解。</h2>
-                <p className="section-intro">三个入口不是并列功能，而是一段逐渐加深的关系。</p>
-                <ol className="journey-index">
-                    <li><span>01</span>首页 · 今天最该先看什么</li>
-                    <li><span>02</span>知之 · 为什么这件事与你有关</li>
-                    <li><span>03</span>历史档案 · 昨天的判断如何延续到今天</li>
-                </ol>
-                <p className="journey-calibration" aria-hidden="true">RELATION DEPTH / 01—03</p>
+                <div className="journey-heading">
+                    <p className="section-kicker">03 / 你会怎么用</p>
+                    <h2 id="journey-title">从今天的提醒，<br />到把问题问清楚。</h2>
+                </div>
+                <div className="journey-summary">
+                    <p className="section-intro">先看今天最值得留意什么，再打开完整解读，沿着你真正关心的事继续问。</p>
+                    <ol className="journey-index">
+                        <li><span>01</span>首页 · 今天先留意什么</li>
+                        <li><span>02</span>知之 · 把原因和选择问清楚</li>
+                        <li><span>03</span>完整解读 · 沿着问题继续追问</li>
+                    </ol>
+                    <p className="journey-calibration" aria-hidden="true">RELATION DEPTH / 01—03</p>
+                </div>
             </aside>
 
             <div className="journey-stages">
@@ -106,18 +84,14 @@ export function ProductJourney() {
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.85, delay: index * 0.04, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <div
-                            className="stage-spectrum"
-                            style={{ background: `linear-gradient(115deg, ${item.colors[0]}, color-mix(in srgb, ${item.colors[1]} 72%, var(--canvas)))` }}
-                            aria-hidden="true"
-                        />
+                        <div className="stage-spectrum" aria-hidden="true" />
                         <span className="stage-register" aria-hidden="true">ARCHIVE / {item.index}</span>
                         <div className="product-stage-copy">
                             <p className="product-stage-meta">{item.index} · {item.label}</p>
                             <h3>{item.title.split("\n").map((line) => <span key={line}>{line}</span>)}</h3>
                             <p>{item.body}</p>
                         </div>
-                        <PhoneScreen variant={item.variant} />
+                        <ProductScreen image={item.image} alt={item.alt} />
                         <motion.div
                             className="stage-scan-line"
                             initial={{ scaleX: 0 }}

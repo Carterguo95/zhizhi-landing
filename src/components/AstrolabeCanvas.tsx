@@ -61,8 +61,8 @@ export function AstrolabeCanvas() {
 
             context.save();
             context.translate(centerX, centerY);
-            context.strokeStyle = "rgba(32, 38, 37, 0.16)";
-            context.lineWidth = 0.7;
+            context.strokeStyle = "rgba(32, 38, 37, 0.28)";
+            context.lineWidth = 0.85;
             for (let index = 0; index < 12; index += 1) {
                 const angle = (Math.PI * 2 * index) / 12 + time * 0.00008;
                 context.beginPath();
@@ -73,11 +73,11 @@ export function AstrolabeCanvas() {
             context.restore();
 
             const ringStyles = [
-                { dash: [2, 6], color: "rgba(146, 94, 97, 0.26)" },
-                { dash: [52, 12, 2, 12], color: "rgba(78, 112, 150, 0.24)" },
-                { dash: [18, 8], color: "rgba(24, 59, 57, 0.22)" },
-                { dash: [2, 10], color: "rgba(32, 38, 37, 0.20)" },
-                { dash: [], color: "rgba(32, 38, 37, 0.30)" },
+                { dash: [2, 6], color: "rgba(111, 65, 71, 0.46)" },
+                { dash: [52, 12, 2, 12], color: "rgba(48, 79, 116, 0.42)" },
+                { dash: [18, 8], color: "rgba(24, 59, 57, 0.40)" },
+                { dash: [2, 10], color: "rgba(32, 38, 37, 0.34)" },
+                { dash: [], color: "rgba(32, 38, 37, 0.52)" },
             ];
 
             ringRadii.forEach((radius, index) => {
@@ -85,7 +85,7 @@ export function AstrolabeCanvas() {
                 context.arc(centerX, centerY, radius, 0, Math.PI * 2);
                 context.setLineDash(ringStyles[index].dash);
                 context.strokeStyle = ringStyles[index].color;
-                context.lineWidth = index === ringRadii.length - 1 ? 1 : 0.75;
+                context.lineWidth = index === ringRadii.length - 1 ? 1.25 : 0.9;
                 context.stroke();
             });
             context.setLineDash([]);
@@ -97,16 +97,16 @@ export function AstrolabeCanvas() {
                 context.beginPath();
                 context.moveTo(centerX + Math.cos(angle) * inner, centerY + Math.sin(angle) * inner);
                 context.lineTo(centerX + Math.cos(angle) * outer, centerY + Math.sin(angle) * outer);
-                context.strokeStyle = index % 6 === 0 ? "rgba(32,38,37,.42)" : "rgba(32,38,37,.18)";
+                context.strokeStyle = index % 6 === 0 ? "rgba(32,38,37,.62)" : "rgba(32,38,37,.30)";
                 context.lineWidth = index % 6 === 0 ? 1 : 0.6;
                 context.stroke();
             }
 
             const orbits = [
-                { items: trigrams, radius: ringRadii[0], speed: 0.00042, color: "rgba(146, 94, 97, 0.76)", size: isMobile ? 12 : 17 },
-                { items: heavenlyStems, radius: ringRadii[1], speed: -0.00024, color: "rgba(32, 38, 37, 0.62)", size: isMobile ? 11 : 15 },
-                { items: earthlyBranches, radius: ringRadii[2], speed: 0.00016, color: "rgba(78, 112, 150, 0.82)", size: isMobile ? 11 : 15 },
-                { items: Array.from({ length: 24 }, (_, index) => String(index + 1).padStart(2, "0")), radius: ringRadii[3], speed: -0.00008, color: "rgba(32, 38, 37, 0.42)", size: isMobile ? 7 : 9 },
+                { items: trigrams, radius: ringRadii[0], speed: 0.00042, color: "rgba(188, 90, 116, 0.99)", size: isMobile ? 12 : 17 },
+                { items: heavenlyStems, radius: ringRadii[1], speed: -0.00024, color: "rgba(52, 122, 112, 0.99)", size: isMobile ? 11 : 15 },
+                { items: earthlyBranches, radius: ringRadii[2], speed: 0.00016, color: "rgba(66, 119, 182, 0.99)", size: isMobile ? 11 : 15 },
+                { items: Array.from({ length: 24 }, (_, index) => String(index + 1).padStart(2, "0")), radius: ringRadii[3], speed: -0.00008, color: "rgba(103, 129, 151, 0.94)", size: isMobile ? 7 : 9 },
             ];
 
             context.textAlign = "center";
@@ -127,7 +127,9 @@ export function AstrolabeCanvas() {
                     context.font = orbitIndex === 3
                         ? `400 ${orbit.size}px "Fragment Mono", monospace`
                         : `400 ${orbit.size}px "Noto Serif SC", "Songti SC", serif`;
-                    context.fillStyle = activeRatio > 0 ? `rgba(213, 169, 92, ${0.48 + activeRatio * 0.52})` : orbit.color;
+                    context.shadowColor = "rgba(246, 240, 229, 0.96)";
+                    context.shadowBlur = isMobile ? 2 : 3;
+                    context.fillStyle = activeRatio > 0 ? `rgba(210, 145, 34, ${0.78 + activeRatio * 0.22})` : orbit.color;
                     context.fillText(item, 0, 0);
                     context.restore();
 

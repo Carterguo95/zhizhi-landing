@@ -27,17 +27,17 @@ const dataFont = Fragment_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "知之 ZHIZHI | 提前看见，此刻真正该问的问题",
+    default: "知之 ZHIZHI | 有些问题还没说出口，知之先看见",
     template: "%s | ZHIZHI"
   },
-  description: "知之从个人命盘与当下时机出发，主动发现值得关注的问题，通过结构化洞察、追问和历史沉淀，帮助你理解自己、判断时机、选择行动。",
-  keywords: ["知之", "ZHIZHI", "东方文化", "八字", "个人洞察", "决策辅助", "每日运势", "主动式AI"],
+  description: "知之结合你的个人命盘、当下时间和过去的记录，主动告诉你最近最值得留意什么、为什么，以及下一步可以怎么做。",
+  keywords: ["知之", "ZHIZHI", "东方文化", "八字", "个人洞察", "决策辅助", "每日运势", "主动洞察"],
   alternates: {
     canonical: "https://zhizhi.one",
   },
   openGraph: {
-    title: "知之 ZHIZHI | 主动看见此刻真正重要的问题",
-    description: "从稳定画像到当下时机，知之通过主动洞察、结构化解释和持续沉淀，帮助你形成更清晰的判断。",
+    title: "知之 ZHIZHI | 你还没说出口，知之先看见",
+    description: "从个人命盘到当下时机，知之帮你找到最近最值得留意的问题，再一步步把原因和选择问清楚。",
     url: "https://zhizhi.one",
     siteName: "ZHIZHI",
     locale: "zh_CN",
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "知之 ZHIZHI | 提前看见，此刻真正该问的问题",
-    description: "东方文化中的人生理解框架，也是帮助你理解自己、判断时机的决策辅助工具。",
+    title: "知之 ZHIZHI | 有些问题还没说出口，知之先看见",
+    description: "借助东方命理了解自己、看看时机，把眼前的选择想得更清楚。",
   },
 };
 

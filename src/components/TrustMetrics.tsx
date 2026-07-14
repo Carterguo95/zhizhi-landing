@@ -16,13 +16,13 @@ export function TrustMetrics() {
                 <div className="trust-seal" aria-hidden="true"><span>TRUST</span><i /><b>04</b></div>
                 <div>
                     <p className="section-kicker">04 / 信任边界</p>
-                    <h2 id="trust-title">不是预测一条<br />确定的命运，<br />是更早看见<br />选择的结构。</h2>
+                    <h2 id="trust-title">知之帮你<br />看清选择，<br />决定仍然<br />由你来做。</h2>
                 </div>
                 <div className="trust-copy">
-                    <p><strong>知之首先是一套东方文化中的人生理解框架，其次是一种决策辅助工具。</strong></p>
-                    <p>它不替你做决定，也不承诺百分百准确。信任来自文化上的熟悉感、个体层面的被理解，以及长期使用中的持续验证。</p>
+                    <p><strong>命理提供一个理解自己的角度，知之把它变成每天都能参考的提醒。</strong></p>
+                    <p>你可以在做决定前，用知之整理自己在意什么、现在的时机怎样、手里有哪些选择。它不会保证某件事一定发生，也不会替你做决定。</p>
                     <div className="trust-points">
-                        <span>稳定画像</span><span>当下时机</span><span>持续校准</span>
+                        <span>了解自己</span><span>看清时机</span><span>自己决定</span>
                     </div>
                 </div>
             </motion.div>

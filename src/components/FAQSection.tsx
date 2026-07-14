@@ -24,7 +24,7 @@ export function FAQSection() {
             <p className="faq-rail" aria-hidden="true">BOUNDARY ARCHIVE · 05 / 06</p>
             <div className="faq-heading">
                 <p className="section-kicker">05 / 常见问题</p>
-                <h2 id="faq-title">在认真开始之前，<br />先把边界说清楚。</h2>
+                <h2 id="faq-title">开始之前，<br />这些事可以先了解。</h2>
             </div>
             <dl className="faq-list">
                 {faqData.map((faq, index) => {

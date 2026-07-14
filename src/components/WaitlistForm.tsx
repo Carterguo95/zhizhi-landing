@@ -38,7 +38,7 @@ export function WaitlistForm({ inverted = false }: { inverted?: boolean }) {
         }
 
         setFormState("error");
-        setErrorMsg(result.error === "already_registered" ? "这个邮箱已经在核心内测名单中" : "提交失败，请稍后重试");
+        setErrorMsg(result.error === "already_registered" ? "这个邮箱已经申请过了" : "暂时提交不了，请稍后再试");
         shakeInput();
     };
 
@@ -54,7 +54,7 @@ export function WaitlistForm({ inverted = false }: { inverted?: boolean }) {
                         exit={{ opacity: 0 }}
                     >
                         <span><Check aria-hidden="true" /></span>
-                        <div><strong>席位申请已记录</strong><p>内测开放时，我们会通过邮件联系你。</p></div>
+                        <div><strong>申请成功</strong><p>内测开放时，我们会通过邮件联系你。</p></div>
                     </motion.div>
                 ) : (
                     <motion.form
@@ -88,7 +88,7 @@ export function WaitlistForm({ inverted = false }: { inverted?: boolean }) {
                             </button>
                         </div>
                         <div className="waitlist-meta">
-                            <p>{formState === "error" && errorMsg ? <span id="waitlist-error">{errorMsg}</span> : "仅用于内测通知，可随时退出。"}</p>
+                            <p>{formState === "error" && errorMsg ? <span id="waitlist-error">{errorMsg}</span> : "只发内测通知，不发无关营销。"}</p>
                             <span>CORE BETA · 2026</span>
                         </div>
                     </motion.form>

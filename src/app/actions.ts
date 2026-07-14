@@ -49,7 +49,7 @@ export async function submitWaitlistEmail(email: string): Promise<WaitlistResult
                     await resend.emails.send({
                         from: 'ZHIZHI <hello@zhizhi.one>',
                         to: email.trim().toLowerCase(),
-                        subject: '✨ 欢迎加入 ZHIZHI 核心内测名单',
+                        subject: '你已加入知之内测名单',
                         react: WaitlistWelcomeEmail({ email: email.trim().toLowerCase() }),
                     });
                     console.log(`Welcome email successfully sent to ${email}`);
