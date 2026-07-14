@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       VERCEL_ORG_ID: team_GuQBH0MPgQ2iSDIHNZ3AuDpt
-      VERCEL_PROJECT_ID: prj_tyE8EuAGZPyRNaRZ91QVsrpegPuM
+      VERCEL_PROJECT_ID: prj_Y6dPG18wD3HOvawbYLwEefVG9pqG
     steps:
       - name: Check out source
         uses: actions/checkout@v4
